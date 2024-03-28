@@ -1,0 +1,4 @@
+mar. 28, 2024 8:33:13 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 123, returning the closest version; found: 122; Please update to a Selenium version that supports CDP version 123
+
+ Login SRTestBot64 feito com sucesso! Teste finalizado!
