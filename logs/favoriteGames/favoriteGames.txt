@@ -1,4 +1,4 @@
-abr. 02, 2024 11:06:47 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+abr. 02, 2024 7:31:05 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 123, returning the closest version; found: 122; Please update to a Selenium version that supports CDP version 123
 
- Login SRTestBot64 feito com sucesso! Teste finalizado!
+ Jogo The Legend Of Zelda: Ocarina Of Time (1998) Seguindo ! Teste finalizado!

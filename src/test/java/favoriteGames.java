@@ -14,7 +14,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.concurrent.TimeUnit;
 
-public class sclogin {
+public class favoriteGames {
     private WebDriver navegador;
 
     @Before
@@ -38,14 +38,14 @@ public class sclogin {
             public void write(byte[] b) throws IOException{
                 super.write(b);
                 second.write(b);
-                }
             }
+        }
     }
 
-    private void takeSnapShot(WebDriver webDriver, String fileWithPath) throws Exception {
+    private void takeSnapShot(WebDriver webDriver) throws Exception {
         TakesScreenshot scrShot = ((TakesScreenshot)webDriver);
         File ScrFile = scrShot.getScreenshotAs(OutputType.FILE);
-        File DestFile=new File(fileWithPath);
+        File DestFile=new File("C:\\Users\\victo\\IdeaProjects\\SpeedrunLeaderboard\\logs\\favoriteGames\\favoriteGames.png");
         FileUtils.copyFile(ScrFile,DestFile);
     }
 
@@ -75,18 +75,40 @@ public class sclogin {
 
         Thread.sleep(10000);
 
+        //Procurar o jogo que deseja favoritar
+        navegador.findElement(By.xpath("/html/body/div[4]/div/div[1]/div[1]/header/div[1]/button[2]/div[2]/div")).click();
+
+        Thread.sleep(8000);
+
+        String jogoSeguido = ("The Legend Of Zelda: Ocarina Of Time (1998)");
+
+        navegador.findElement(By.xpath("/html/body/div[4]/div/div[1]/div[1]/header/div[1]/div[5]/div/div/div/div/input")).sendKeys(jogoSeguido);
+        navegador.findElement(By.xpath("/html/body/div[4]/div/div[1]/div[1]/header/div[1]/div[5]/div/div/div[2]/a[2]/button")).click();
+
+        //Favoritar o jogo
+        navegador.findElement(By.xpath("/html/body/div[4]/div/div[1]/main/div[4]/div[1]/div/div[1]/div/div[2]/div/button[2]")).click();
+
+        Thread.sleep(4000);
+
         //Validação do teste
-        WebElement validateUser = navegador.findElement(By.xpath("/html/body/div[4]/div/div[2]/div[11]/div/div/div/div/button[1]/a/div/span"));
-        System.out.println("\n Login " +validateUser.getText()+ " feito com sucesso! Teste finalizado!");
-        Assert.assertEquals(validateUser.getText(), user);
+          WebElement validateTest = navegador.findElement(By.xpath("/html/body/div[4]/div/div[1]/main/div[4]/div[1]/div/div[1]/div/div[2]/div/button[2]"));
+            System.out.println("\n Jogo " +jogoSeguido+" "+validateTest.getText()+ " ! Teste finalizado!");
+            Assert.assertEquals(validateTest.getText() ,"Seguindo");
+
+        this.takeSnapShot(navegador);
+
+        Thread.sleep(8000);
+
+        //Deixar de seguir para o próximo teste ser executado
+        navegador.findElement(By.xpath("/html/body/div[4]/div/div[1]/main/div[4]/div[1]/div/div[1]/div/div[2]/div/button[2]")).click();
+
+        navegador.findElement(By.xpath("/html/body/div[4]/div/div[2]/div[586]/div[2]/div/div/div[3]/div/button[1]")).click();
 
         Thread.sleep(10000);
-
-        this.takeSnapShot(navegador,"C:\\Users\\victo\\IdeaProjects\\SpeedrunLeaderboard\\logs\\sclogin\\sclogin.png");
 
     }
     @After
     public void tearDown(){
-        navegador.quit();
+       navegador.quit();
     }
 }
