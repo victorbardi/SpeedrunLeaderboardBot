@@ -1,5 +1,5 @@
 02/04/2024
-- Novo cenário de testes "favoriteGamees" que segue um jogo específico no perfil.
+- Novo cenário de testes "favoriteGames" que segue um jogo específico no perfil.
 - Adição de pastas com evidências para cada cenário de teste.
 
 28/03/2024
