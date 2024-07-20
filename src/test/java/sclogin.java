@@ -20,7 +20,7 @@ public class sclogin {
     @Before
     public void setup() {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\victo\\Downloads\\chromedriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\victo\\chromedriver\\chromedriver\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         navegador = new ChromeDriver();

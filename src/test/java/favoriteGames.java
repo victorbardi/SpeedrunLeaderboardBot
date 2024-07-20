@@ -20,7 +20,7 @@ public class favoriteGames {
     @Before
     public void setup() {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\victo\\Downloads\\chromedriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\victo\\chromedriver\\chromedriver\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         navegador = new ChromeDriver();
@@ -92,23 +92,27 @@ public class favoriteGames {
 
         //Validação do teste
           WebElement validateTest = navegador.findElement(By.xpath("/html/body/div[4]/div/div[1]/main/div[4]/div[1]/div/div[1]/div/div[2]/div/button[2]"));
-            System.out.println("\n Jogo " +jogoSeguido+" "+validateTest.getText()+ " ! Teste finalizado!");
+            System.out.println("\n Jogo seguido com sucesso: " +jogoSeguido+" "+validateTest.getText()+ " ! Teste finalizado!");
             Assert.assertEquals(validateTest.getText() ,"Seguindo");
 
         this.takeSnapShot(navegador);
 
-        Thread.sleep(8000);
+        Thread.sleep(15000);
 
         //Deixar de seguir para o próximo teste ser executado
         navegador.findElement(By.xpath("/html/body/div[4]/div/div[1]/main/div[4]/div[1]/div/div[1]/div/div[2]/div/button[2]")).click();
 
-        navegador.findElement(By.xpath("/html/body/div[4]/div/div[2]/div[586]/div[2]/div/div/div[3]/div/button[1]")).click();
+        Thread.sleep(15000);
+
+        //Confirmar que irá parar de seguir o jogo
+        navegador.findElement(By.cssSelector("#\\:R16\\: > div > div.bg-primary-500\\/5.px-4.py-2 > div > button.x-input-button.rounded.text-sm.px-2\\.5.py-1\\.5.bg-primary-600.text-on-primary-500.border.border-white\\/5.hover\\:bg-primary-500.disabled\\:bg-primary-700")).click();
 
         Thread.sleep(10000);
 
     }
     @After
     public void tearDown(){
-       navegador.quit();
+
+        navegador.quit();
     }
 }
